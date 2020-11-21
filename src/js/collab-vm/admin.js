@@ -30,6 +30,7 @@ var defaultVMSettings = {
 	"qmp-socket-type": "local",
 	"qmp-address": "",
 	"qmp-port": 5800,
+	"max-attempts": 5,
 	"qemu-cmd": "",
 	"hypervisor": "qemu",
 	"qemu-snapshot-mode": "off",
