@@ -190,8 +190,11 @@ function setInputValue(settings, name, value) {
 			x.prop("checked", value == "1" ? true : false);
 			// Call the change handler for the checkbox
 			x.trigger("change");
-		} else
+		} else {
+			if (name === "jpeg-quality" && value == 255)
+				x.parent().hide();
 			x.val(value);
+		}
 		return true;
 	} else if ((x = settings.find("button.dropdown-toggle[name='" + name + "']").eq(0)).length) {
 		// Dropdown buttons
