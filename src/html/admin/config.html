@@ -128,7 +128,29 @@
 									<label for="jpeg-quality-box">JPEG Compression Quality:</label>
 									<input type="number" class="form-control" name="jpeg-quality" id="jpeg-quality-box">
 								</div>
-								
+
+								<div class="form-group form-inline">
+									<label><input type="checkbox" name="mod-enabled" id="mod-enabled-chkbox"> Enable Moderator Rank</label>
+								</div>
+
+								<div class="form-group form-inline" id="mod-perms">
+									<div class="form-group">
+										<label><input type="checkbox" name="mod-perm-restore"> Restore Snapshot</label>&nbsp;
+									</div>
+									<div class="form-group">
+										<label><input type="checkbox" name="mod-perm-reboot"> Reboot VM</label>&nbsp;
+									</div>
+									<div class="form-group">
+										<label><input type="checkbox" name="mod-perm-ban"> Ban Users</label>&nbsp;
+									</div>
+									<div class="form-group">
+										<label><input type="checkbox" name="mod-perm-cancel"> Cancel Votes</label>&nbsp;
+									</div>
+									<div class="form-group">
+										<label><input type="checkbox" name="mod-perm-mute"> Mute Users</label>
+									</div>
+								</div>
+
 								<!--
 								<div class="form-group form-inline">
 								<label><input type="checkbox" name="disable-keyboard" id="disable-keyboard-chkbox">
@@ -148,9 +170,9 @@
 							</div>
 						</div>
 						<div class="panel panel-default">
-							<div class="panel-heading">Server Password</div>
+							<div class="panel-heading">Server Passwords</div>
 							<div class="panel-body">
-								<label for="chng-pwd-box"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Change Password:</label>
+								<label for="chng-pwd-box"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Change Master Password:</label>
 								<div class="form-group input-group">
 									<span class="input-group-addon">
 										<input type="checkbox" aria-label="..." id="chng-pwd-chkbox">
@@ -160,7 +182,17 @@
 								<button class="btn btn-default" id="chng-pwd-btn" type="button" disabled>
 									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Change Password
 								</button>
-								
+								<br><br>
+								<label for="chng-modpwd-box"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Change Moderator Password:</label>
+								<div class="form-group input-group">
+									<span class="input-group-addon">
+										<input type="checkbox" aria-label="..." id="chng-modpwd-chkbox">
+									</span>
+									<input type="password" class="form-control" aria-label="..." name="password" id="chng-modpwd-box" disabled>
+								</div>
+								<button class="btn btn-default" id="chng-modpwd-btn" type="button" disabled>
+									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Change Password
+								</button>
 							</div>
 						</div>
 						<div class="panel panel-default">
@@ -354,6 +386,7 @@
 								<label><input type="checkbox" name="vm-agent-enabled" id="agent-enabled-chkbox">
 									<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Agent Enabled
 								</label>
+								<br>
 								<label><input type="checkbox" name="vm-agent-use-virtio" id="agent-use-virtio-chkbox"> Use Virtio</label> - requires virtio serial driver to be installed
 								<div class="form-group form-inline" style="display: none">
 									<div class="form-group">
@@ -377,6 +410,7 @@
 										<input type="number" class="form-control" name="vm-agent-port" id="agent-port" disabled>
 									</div>
 								</div>
+								<br>
 								<label><input type="checkbox" name="vm-restore-heartbeat" id="restore-heartbeat-chkbox" disabled>
 									<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Restore After Heartbeat Timeout
 								</label>
@@ -385,7 +419,6 @@
 									<label for="heartbeat-timeout-box"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Heartbeat Timeout:</label>
 									<span><input type="number" class="form-control" name="vm-heartbeat-timeout" id="heartbeat-timeout-box" disabled> seconds</span>
 								</div>-->
-								
 								<label><input type="checkbox" name="vm-uploads-enabled" id="uploads-enabled-chkbox" disabled>
 									<span class="glyphicon glyphicon-file" aria-hidden="true"></span> Uploads Enabled
 								</label>

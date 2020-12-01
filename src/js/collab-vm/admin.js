@@ -128,9 +128,17 @@ function forEachInput(settings, callback) {
 function saveServerSettings() {
 	displayLoading();
 	var json = "";
+	var modPerms = 0;
 	forEachInput($("#server-settings"), function(name, value) {
-		json += "\"" + name + "\":" + value + ",";
+		if (name === "mod-perm-restore") modPerms += value ? 1 : 0;
+		else if (name === "mod-perm-reboot") modPerms += value ? 2 : 0;
+		else if (name === "mod-perm-ban") modPerms += value ? 4 : 0;
+		else if (name === "mod-perm-cancel") modPerms += value ? 8 : 0;
+		else if (name === "mod-perm-mute") modPerms += value ? 16 : 0;
+		else 
+			json += "\"" + name + "\":" + value + ",";
 	});
+	json += "\"mod-perms\":" + modPerms + ",";
 	if (!json)
 		return;
 	json =  '{"settings":{' + json.substring(0, json.length - 1) + "}}";
@@ -183,11 +191,19 @@ function splitQueryString(query) {
  * @returns True when the input was found.
  */
 function setInputValue(settings, name, value) {
+	if (name === "mod-perms") {
+		settings.find("input[name='mod-perm-restore']").prop("checked", value & 1 ? true : false);
+		settings.find("input[name='mod-perm-reboot']").prop("checked", value & 2 ? true : false);
+		settings.find("input[name='mod-perm-ban']").prop("checked", value & 4 ? true : false);
+		settings.find("input[name='mod-perm-cancel']").prop("checked", value & 8 ? true : false);
+		settings.find("input[name='mod-perm-mute']").prop("checked", value & 16 ? true : false);
+		return true;
+	}
 	var x = settings.find("input[name='" + name + "']").eq(0);
 	// Text, number,and checkbox inputs
 	if (x.length) {
 		if (x.is(":checkbox")) {
-			x.prop("checked", value == "1" ? true : false);
+			x.prop("checked", value == "1");
 			// Call the change handler for the checkbox
 			x.trigger("change");
 		} else {
@@ -408,6 +424,10 @@ function changePassword() {
 	tunnel.sendMessage("admin", 4, '{"password":"' + $("#chng-pwd-box").val() + '"}');
 }
 
+function changeModPassword() {
+	tunnel.sendMessage("admin", 4, '{"mod-pw":"' + $("#chng-modpwd-box").val() + '"}');
+}
+
 tunnel.onstatechange = function(state) {
 	switch (state) {
 		case Guacamole.Tunnel.State.OPEN:
@@ -467,6 +487,17 @@ tunnel.oninstruction = function(opcode, parameters) {
 						} else if (parameters[1] == 2) {
 							// Invalid VM ID
 							displaySettingsError("Invalid VM ID");
+						} else if (parameters[1] == 3) {
+							// Moderator password given
+							if (!$("#password-input").is(":visible"))
+								displayPasswordInput();
+							var alert = createAlert("<strong>Please log in on the VM View.</strong>");
+							$("#password-input").prepend(alert);
+							alert.show("fast");
+							var input = $("#master-pwd");
+							input.val("");
+							input.prop("disabled", false);
+							$("#pwd-submit").prop("disabled", false);
 						}
 						break;
 					case 1:
@@ -617,15 +648,29 @@ $(function() {
 		$("#chng-pwd-box").prop("disabled", disabled);
 		$("#chng-pwd-btn").prop("disabled", disabled);
 	});
+
+	$("#chng-modpwd-chkbox").change(function() {
+		var disabled = !$(this).prop("checked");
+		$("#chng-modpwd-box").prop("disabled", disabled);
+		$("#chng-modpwd-btn").prop("disabled", disabled);
+	});
 	
 	$("#chng-pwd-btn").click(function() {
 		changePassword();
+	});
+
+	$("#chng-modpwd-btn").click(function() {
+		changeModPassword();
 	});
 	
 	/*$("#web-server-chkbox").change(function() {
 		$("#web-server-box").prop("disabled", !$(this).prop("checked"));
 	});*/
-		
+	
+	$("#mod-enabled-chkbox").change(function() {
+		$("#mod-perms input").prop("disabled", !$(this).prop("checked"));
+	});
+	
 	$("#turns-enabled-chkbox").change(function() {
 		$("#turn-time-box").prop("disabled", !$(this).prop("checked"));
 	});
