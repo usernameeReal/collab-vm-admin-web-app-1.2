@@ -133,11 +133,11 @@ function saveServerSettings() {
 		if (name === "mod-perm-restore") modPerms += value ? 1 : 0;
 		else if (name === "mod-perm-reboot") modPerms += value ? 2 : 0;
 		else if (name === "mod-perm-ban") modPerms += value ? 4 : 0;
-		else if (name === "mod-perm-cancel") modPerms += value ? 8 : 0;
+		else if (name === "mod-perm-forcevotes") modPerms += value ? 8 : 0;
 		else if (name === "mod-perm-mute") modPerms += value ? 16 : 0;
 		else if (name === "mod-perm-kick") modPerms += value ? 32 : 0;
 		else if (name === "mod-perm-endturns") modPerms += value ? 64 : 0;
-		else if (name === "mod-perm-noantispam") modPerms += value ? 128 : 0;
+		else if (name === "mod-perm-noratelimits") modPerms += value ? 128 : 0;
 		else if (name === "mod-perm-renameuser") modPerms += value ? 256 : 0;
 	        else 
 			json += "\"" + name + "\":" + value + ",";
@@ -199,11 +199,11 @@ function setInputValue(settings, name, value) {
 		settings.find("input[name='mod-perm-restore']").prop("checked", value & 1 ? true : false);
 		settings.find("input[name='mod-perm-reboot']").prop("checked", value & 2 ? true : false);
 		settings.find("input[name='mod-perm-ban']").prop("checked", value & 4 ? true : false);
-		settings.find("input[name='mod-perm-cancel']").prop("checked", value & 8 ? true : false);
+		settings.find("input[name='mod-perm-forcevotes']").prop("checked", value & 8 ? true : false);
 		settings.find("input[name='mod-perm-mute']").prop("checked", value & 16 ? true : false);
 		settings.find("input[name='mod-perm-kick']").prop("checked", value & 32 ? true : false);
 		settings.find("input[name='mod-perm-endturns']").prop("checked", value & 64 ? true : false);
-		settings.find("input[name='mod-perm-noantispam']").prop("checked", value & 128 ? true : false);
+		settings.find("input[name='mod-perm-noratelimits']").prop("checked", value & 128 ? true : false);
 		settings.find("input[name='mod-perm-renameuser']").prop("checked", value & 256 ? true : false);
 		return true;
 	}
