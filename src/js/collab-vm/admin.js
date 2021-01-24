@@ -173,7 +173,7 @@ function saveVMSettings() {
 	vmSettingsName = null;
 	$("#vm-settings").hide();
 	$("#vm-list").parent().addClass("table-hover");
-	$("#new-vm-btn").prop("disabled", true);
+	$("#new-vm-btn").prop("disabled", false);
 	
 	tunnel.sendMessage("admin", 4, json);
 }
@@ -387,14 +387,14 @@ function showVMSettings(name) {
 	vmSettingsName = name;
 
 	/*$("#vm-settings").show("slow");
-	$("#vm-list").parent().removeClass("table-hover");
-	$("#new-vm-btn").prop("disabled", true);*/
+	$("#vm-list").parent().removeClass("table-hover");*/
+	$("#new-vm-btn").prop("disabled", true);
 	hideVMSettings(true);
 }
 
 function hideVMSettings(show) {
 	show = !!show;
-	$("#new-vm-btn").prop("disabled", show);
+	$("#new-vm-btn").prop("disabled", false);
 	if (show) {
 		$("#vm-list").parent().removeClass("table-hover");
 		$("#vm-settings").show("slow");
