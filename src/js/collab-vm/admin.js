@@ -248,6 +248,7 @@ function displaySettingsError(key, value, success) {
 	
 	$("#alert-box").parent().parent().prepend(alert);
 	alert.show("fast");
+	$("#new-vm-btn").prop("disabled", false);
 }
 
 function parseSettings(json) {
