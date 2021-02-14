@@ -104,23 +104,23 @@
 								
 								<div class="form-group form-inline">
 									<label for="chat-rate-count-box"><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Chat Message Rate:</label>
-									<input type="number" class="form-control" name="chat-rate-count" id="chat-rate-count-box"> messages per
-									<input type="number" class="form-control" name="chat-rate-time" id="chat-rate-time-box"> second(s)
+									<input type="number" class="form-control" name="chat-rate-count" id="chat-rate-count-box" min="0"> messages per
+									<input type="number" class="form-control" name="chat-rate-time" id="chat-rate-time-box" min="0"> second(s)
 								</div>
 								
 								<div class="form-group form-inline">
 									<label for="chat-mute-box">Chat Mute Time:</label>
-									<input type="number" class="form-control" name="chat-mute-time" id="chat-mute-box"> seconds
+									<input type="number" class="form-control" name="chat-mute-time" id="chat-mute-box" min="0"> seconds
 								</div>
 								
 								<div class="form-group form-inline">
 									<label for="max-cons-box">Max Connections From One IP:</label>
-									<input type="number" class="form-control" aria-label="..." name="max-cons" id="max-cons-box">
+									<input type="number" class="form-control" aria-label="..." name="max-cons" id="max-cons-box" min="0">
 								</div>
 								
 								<div class="form-group form-inline">
 									<label for="max-upload-box">Upload Timeout:</label>
-									<input type="number" class="form-control" name="max-upload-time" id="max-upload-box"> seconds
+									<input type="number" class="form-control" name="max-upload-time" id="max-upload-box" min="0"> seconds
 								</div>
 								
 								<div class="form-group form-inline">
@@ -130,7 +130,7 @@
 								
 								<div class="form-group form-inline">
 									<label for="jpeg-quality-box">JPEG Compression Quality:</label>
-									<input type="number" class="form-control" name="jpeg-quality" id="jpeg-quality-box">
+									<input type="number" class="form-control" name="jpeg-quality" id="jpeg-quality-box" min="0">
 								</div>
 
 								<div class="form-group form-inline">
@@ -294,7 +294,7 @@
 								<br>
 								<div class="form-group">
 									<label for="vm-vnc-port">VNC Port:</label>
-									<input type="number" class="form-control" name="vm-vnc-port" id="vm-vnc-port"> - must be at least 5900
+									<input type="number" class="form-control" name="vm-vnc-port" id="vm-vnc-port" min="5900" max="5999">
 								</div>
 							</div>
 							
@@ -319,13 +319,13 @@
 								<br>
 								<div class="form-group">
 									<label for="vm-qmp-port">QMP Port:</label>
-									<input type="number" class="form-control" name="vm-qmp-port" id="vm-qmp-port">
+									<input type="number" class="form-control" name="vm-qmp-port" id="vm-qmp-port" min="5800" max="5899">
 								</div>
 							</div>
 							
 							<div class="form-group form-inline">
 								<label for="vm-max-attempts">Max Guacamole/QMP Connection Attempts:</label>
-								<input type="number" class="form-control" name="vm-max-attempts" id="vm-max-attempts">
+								<input type="number" class="form-control" name="vm-max-attempts" id="vm-max-attempts" min="0">
 							</div>
 							
 							<div class="form-group">
@@ -384,7 +384,7 @@
 								<br>
 								<div class="form-group form-inline">
 									<label for="turn-time-box"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Turn Time:</label>
-									<span><input type="number" class="form-control" name="vm-turn-time" id="turn-time-box" disabled> seconds</span>
+									<span><input type="number" class="form-control" name="vm-turn-time" id="turn-time-box" min="0" disabled> seconds</span>
 								</div>
 							</div>
 							
@@ -395,11 +395,11 @@
 								<br>
 								<div class="form-group form-inline">
 									<label for="vote-time-box"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Vote Time:</label>
-									<span><input type="number" class="form-control" name="vm-vote-time" id="vote-time-box" disabled> seconds</span>
+									<span><input type="number" class="form-control" name="vm-vote-time" id="vote-time-box" min="0" disabled> seconds</span>
 								</div>
 								<div class="form-group form-inline">
 									<label for="vote-cooldown-time-box"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Vote Cooldown Time:</label>
-									<span><input type="number" class="form-control" name="vm-vote-cooldown-time" id="vote-cooldown-time-box" disabled> seconds</span>
+									<span><input type="number" class="form-control" name="vm-vote-cooldown-time" id="vote-cooldown-time-box" min="0" disabled> seconds</span>
 								</div>
 							</div>
 							
@@ -428,7 +428,7 @@
 									</div>
 									<div class="form-group">
 										<label for="agent-port">Agent Port:</label>
-										<input type="number" class="form-control" name="vm-agent-port" id="agent-port" disabled>
+										<input type="number" class="form-control" name="vm-agent-port" id="agent-port" min="0" disabled>
 									</div>
 								</div>
 								<br>
@@ -446,15 +446,15 @@
 								<br>
 								<div class="form-group form-inline">
 									<label for="upload-cooldown-time-box"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Upload Cooldown Time:</label>
-									<span><input type="number" class="form-control" name="vm-upload-cooldown-time" id="upload-cooldown-time-box" disabled> seconds</span>
+									<span><input type="number" class="form-control" name="vm-upload-cooldown-time" id="upload-cooldown-time-box" min="0" disabled> seconds</span>
 								</div>
 								<div class="form-group form-inline">
 									<label for="upload-max-size-box">Max File Size:</label>
-									<span><input type="number" class="form-control" name="vm-upload-max-size" id="upload-max-size-box" disabled> bytes</span>
+									<span><input type="number" class="form-control" name="vm-upload-max-size" id="upload-max-size-box" min="0" disabled> bytes</span>
 								</div>
 								<div class="form-group form-inline">
 									<label for="upload-max-filename-box">Max Filename Length:</label>
-									<span><input type="number" class="form-control" name="vm-upload-max-filename" id="upload-max-filename-box" disabled></span>
+									<span><input type="number" class="form-control" name="vm-upload-max-filename" id="upload-max-filename-box" min="0" disabled></span>
 								</div>
 							</div>
 							

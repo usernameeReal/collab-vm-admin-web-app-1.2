@@ -8,7 +8,7 @@ var DEBUG_LOGIN = false;
 /** @define {boolean} */
 var DEBUG_LOADING = false;
 
-var tunnel = new Guacamole.WebSocketTunnel("ws://" + serverAddress + "/");
+var tunnel = new Guacamole.WebSocketTunnel((location.protocol == "https:" ? "wss://" : "ws://") + serverAddress + "/");
 var pingInterval;
 /** Currently selected VM in table */
 var vmTableSelected;
