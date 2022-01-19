@@ -596,15 +596,7 @@ $(function() {
 		div.removeClass("open");
 		btn.trigger("dropdown", val);
 	});
-	$("#copy-vm-password").click(function() {
-		if (!navigator.clipboard) {
-			prompt("VM Password:", document.getElementById("vm-vm-password").value);
-		}
-		else {
-			navigator.clipboard.writeText(document.getElementById("vm-vm-password").value);
-		}
-	});
-	
+
 	$("#start-vm-btn").click(function() {
 		tunnel.sendMessage("admin", vmAction.StartController, vmTableSelected);
 	});
