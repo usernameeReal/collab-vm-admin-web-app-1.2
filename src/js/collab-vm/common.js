@@ -7,4 +7,4 @@ function debugLog(msg) {
 }
 
 /** @const */
-var serverAddress = window.location.host;
+var serverAddress = "localhost:8081";
