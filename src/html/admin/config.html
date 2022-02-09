@@ -57,6 +57,63 @@
 				</div>
 			</div>
 		</nav>
+		<div class="modal fade" id="advopt-modal" tabindex="-1" role="dialog" aria-labelledby="advopt-modal-label">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="advopt-modal-label">Advanced Options</h4>
+				  </div>
+				  <div class="modal-body">
+					<span style="font-weight:bold">These options may break the server. You have been warned.</span>
+					<hr>
+					<label><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Generic Options:</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="chat-msg-history-addon">Amount of messages to store in chat history</span>
+					  <input type="number" class="form-control" aria-describedby="chat-msg-history-addon" name="chat-msg-history" id="chat-msg-history-box" min="0">
+					</div>
+					<hr>
+					<label><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Turn Ratelimit Options:</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="turn-rate-count-addon">To trigger after</span>
+					  <input type="number" class="form-control" aria-describedby="turn-rate-count-addon" name="turn-rate-count" id="turn-rate-count-box" min="1">
+					  <span class="input-group-addon">instructions sent</span>
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="turn-rate-time-addon">...in a span of</span>
+					  <input type="number" class="form-control" aria-describedby="turn-rate-time-addon" name="turn-rate-time" id="turn-rate-time-box" min="1">
+					  <span class="input-group-addon">seconds</span>
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="turn-mute-time-addon">...mute for</span>
+					  <input type="number" class="form-control" aria-describedby="turn-mute-time-addon" name="turn-mute-time" id="turn-mute-time-box" min="1">
+					  <span class="input-group-addon">seconds</span>
+					</div>
+					<hr>
+					<label><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> Name Ratelimit Options:</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="name-rate-count-addon">To trigger after</span>
+					  <input type="number" class="form-control" aria-describedby="name-rate-count-addon" name="name-rate-count" id="name-rate-count-box" min="1">
+					  <span class="input-group-addon">instructions sent</span>
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="name-rate-time-addon">...in a span of</span>
+					  <input type="number" class="form-control" aria-describedby="name-rate-time-addon" name="name-rate-time" id="name-rate-time-box" min="1">
+					  <span class="input-group-addon">seconds</span>
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="name-mute-time-addon">...mute for</span>
+					  <input type="number" class="form-control" aria-describedby="name-mute-time-addon" name="name-mute-time" id="name-mute-time-box" min="1">
+					  <span class="input-group-addon">seconds</span>
+					</div>
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-primary" id="advopt-ok-btn">Save</button>
+				  </div>
+				</div>
+			</div>
+		</div>
 		<div class="container-fluid">
 			<div class="page-header">
 				<h1><small><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></small> Admin Panel</h1>
