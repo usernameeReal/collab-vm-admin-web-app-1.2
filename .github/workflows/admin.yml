@@ -3,11 +3,7 @@
 
 name: "[collab-vm-admin-web-app] - Node.js Gulp"
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
   check_skip:
