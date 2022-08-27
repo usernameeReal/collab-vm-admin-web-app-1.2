@@ -111,7 +111,7 @@ function forEachInput(settings, callback) {
 			} else if ($(this).attr("type") === "number") {
 				value = this.value;
 			} else {
-				value = '"' + this.value + '"';
+				value = JSON.stringify( this.value );
 			}
 			callback(this.name, value);
 		});
