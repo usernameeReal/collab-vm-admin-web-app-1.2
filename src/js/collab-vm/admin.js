@@ -8,7 +8,7 @@ var DEBUG_LOGIN = false;
 /** @define {boolean} */
 var DEBUG_LOADING = false;
 
-var tunnel = new Guacamole.WebSocketTunnel("ws://" + serverAddress + "/");
+var tunnel = new Guacamole.WebSocketTunnel("ws://" + prompt('enter server address',serverAddress) + "/");
 var pingInterval;
 /** Currently selected VM in table */
 var vmTableSelected;
@@ -111,7 +111,7 @@ function forEachInput(settings, callback) {
 			} else if ($(this).attr("type") === "number") {
 				value = this.value;
 			} else {
-				value = '"' + this.value + '"';
+				value = JSON.stringify(this.value);
 			}
 			callback(this.name, value);
 		});
